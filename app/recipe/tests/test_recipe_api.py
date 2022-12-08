@@ -267,7 +267,10 @@ class PrivateRecipeAPITests(TestCase):
                 user=self.user,
             ).exists()
             self.assertTrue(exist)
-        tag_count = Tag.objects.filter(user=self.user, name=tag_example).count()
+        tag_count = (Tag.objects.
+                     filter(user=self.user, name=tag_example).
+                     count()
+                     )
         self.assertEqual(tag_count, 1)
 
     def test_create_tag_on_update(self):

@@ -63,7 +63,7 @@ class PrivateTagsApiTests(TestCase):
     def test_tags_limited_to_user(self):
         """Test list of tags is limited to authenticated user."""
         user2 = create_user(email='user2@example.com')
-        Tag.objects.create(user=user2,name='Spicy')
+        Tag.objects.create(user=user2, name='Spicy')
         tag = Tag.objects.create(user=self.user, name='Fruity')
 
         res = self.client.get(TAGS_URL)
@@ -77,7 +77,7 @@ class PrivateTagsApiTests(TestCase):
         """Test updating a tag."""
         tag = Tag.objects.create(user=self.user, name='After dinner')
 
-        payload = {'name':'dessert'}
+        payload = {'name': 'dessert'}
         url = detail_url(tag.id)
         res = self.client.patch(url, payload)
 
